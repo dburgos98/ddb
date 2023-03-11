@@ -8,18 +8,25 @@
         <title>Usuarios</title>
     </head>
     <body>
-        <div class="container">
-            <table class="table">
-                <thead>
-                    <th>ID</th>
-                    <th>Identificación</th>
-                    <th></th>
+        <h1 class="text-center">Listado de usuarios</h1>
+        <div class="container mt-3">
+            <table class="table table-hover">
+                <thead class="table-primary">
+                    <tr class="text-center">
+                        <th>ID</th>
+                        <th>Identificación</th>
+                        <th>Número celular</th>
+                        <th>Fecha creación</th>
+                        <th></th>
+                    </tr>
                 </thead>
                 <tbody>
                     @foreach($users as $user)
-                        <tr>
+                        <tr class="text-center">
                             <td>{{ $user["id"]}}</td>
                             <td>{{ $user["identification_number"]}}</td>
+                            <td>{{ $user["mobile_number"]}}</td>
+                            <td>{{ $user["created_at"]}}</td>
                             <td>
                                 <a class="btn btn-primary" href="{{ route('users.view', $user['id'])}}">Ver usuario</a>
                             </td>

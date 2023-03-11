@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\UserRepository;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\View\View;
 
 class UserController extends Controller
@@ -14,7 +15,10 @@ class UserController extends Controller
 
     public function index(): View
     {
-        $users = $this->userRepository->getAllUsers()->paginate();
+        $users = Cache::remember('users', 60 * 5, function () {
+            return $this->userRepository->getAllUsers()
+                ->sortByDesc('created_at');
+        })->paginate();
 
         return view('users.index', compact('users'));
     }
