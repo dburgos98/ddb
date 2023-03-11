@@ -18,10 +18,10 @@
                 <tbody>
                     @foreach($users as $user)
                         <tr>
-                            <td>{{ $user["user_id"]}}</td>
+                            <td>{{ $user["id"]}}</td>
                             <td>{{ $user["identification_number"]}}</td>
                             <td>
-                                <a class="btn btn-primary" href="{{ route('users.view', $user['user_id'])}}">Ver usuario</a>
+                                <a class="btn btn-primary" href="{{ route('users.view', $user['id'])}}">Ver usuario</a>
                             </td>
                         </tr>
                     @endforeach
