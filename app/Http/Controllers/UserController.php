@@ -21,7 +21,8 @@ class UserController extends Controller
 
     public function view(int $id): View
     {
-        $userTransactions = $this->userRepository->getUserTransactions($id);
+        $userTransactions = $this->userRepository->getUserTransactions($id)
+            ->paginate();
 
         return view('users.view', compact('userTransactions'));
     }
