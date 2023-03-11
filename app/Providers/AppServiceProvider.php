@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Repositories\DDBUserRepository;
 use App\Repositories\UserRepository;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
@@ -40,5 +41,7 @@ class AppServiceProvider extends ServiceProvider
         }
 
         $this->app->bind(UserRepository::class, DDBUserRepository::class);
+
+        JsonResource::withoutWrapping();
     }
 }

@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\v1\UserResource;
 use App\Services\UserService;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\Response;
 use Illuminate\View\View;
 
 class UserController extends Controller
@@ -31,10 +30,10 @@ class UserController extends Controller
         return view('users.view', compact('userTransactions'));
     }
 
-    public function show(int $id): JsonResponse
+    public function show(int $id): UserResource
     {
         $user = $this->userService->getUser($id);
 
-        return Response::json($user);
+        return new UserResource($user);
     }
 }
